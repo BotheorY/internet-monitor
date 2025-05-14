@@ -1,0 +1,63 @@
+# Internet Monitor
+
+Internet Monitor is a simple desktop application built with Python and Tkinter that monitors your internet connection status (up/down). It logs periods of disconnection and reconnection and displays the current status along with the times of the last disconnection and reconnection events.
+
+## Features
+
+*   **Real-time Status:** Shows whether you are currently connected to the internet or not.
+*   **Event Logging:** Logs internet down and up events with timestamps to a local file (`internet_log.txt`).
+*   **Last Event Display:** Displays the date and time of the last recorded internet disconnection and reconnection.
+*   **Persistent History:** Loads the last known disconnection and reconnection times from the log file on startup.
+*   **User-Friendly Interface:** Simple GUI that provides clear information at a glance.
+
+## How to Run
+
+There are two ways to run this application:
+
+### 1. From Source Code
+
+**Prerequisites:**
+*   Python 3.x
+*   Tkinter (usually included with Python standard library)
+
+**Steps:**
+1.  Clone this repository or download the source code.
+2.  Navigate to the project directory in your terminal.
+3.  Run the script:
+    ```bash
+    python internet_monitor.py
+    ```
+
+### 2. As an Executable (Windows)
+
+An executable version (`internetm.exe`) can be built using PyInstaller. The `internetm.spec` file is provided for this purpose.
+
+**To build the executable:**
+1.  Ensure you have PyInstaller installed: `pip install pyinstaller`
+2.  Navigate to the project directory.
+3.  Run PyInstaller with the spec file:
+    ```bash
+    pyinstaller internetm.spec
+    ```
+4.  The executable will be located in the `dist` folder (`dist/internetm/internetm.exe` or `dist/internetm.exe`).
+
+**Note:** A pre-built executable is also provided in the `dist` folder of this repository.
+
+## Dependencies
+
+*   **Python 3.x**
+*   **Tkinter:** For the graphical user interface. This is typically part of the Python standard library, so no separate installation is usually needed.
+
+## Logging
+
+*   Connection events (DOWN, UP) are logged to `internet_log.txt` in the same directory as the application.
+*   Each log entry includes a timestamp and the event type.
+    Example: `YYYY/MM/DD HH:MM - DOWN`
+
+## Icon
+
+The application uses `internet-monitor.ico` as its icon, located in the `icon` directory.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
