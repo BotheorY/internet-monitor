@@ -2,6 +2,8 @@
 
 Internet Monitor is a simple desktop application built with Python and Tkinter that monitors your internet connection status (up/down). It logs periods of disconnection and reconnection and displays the current status along with the times of the last disconnection and reconnection events.
 
+![Internet Monitor Screenshot](screenshot.png)
+
 ## Features
 
 *   **Real-time Status:** Shows whether you are currently connected to the internet or not.
@@ -13,7 +15,7 @@ Internet Monitor is a simple desktop application built with Python and Tkinter t
 
 ## How to Run
 
-There are two ways to run this application:
+There are three ways to run this application:
 
 ### 1. From Source Code
 
@@ -43,6 +45,23 @@ An executable version (`internetm.exe`) can be built using PyInstaller. The `int
 4.  The executable will be located in the `dist` folder (`dist/internetm/internetm.exe` or `dist/internetm.exe`).
 
 **Note:** A pre-built executable is also provided in the `dist` folder of this repository.
+
+### 3. Using the Windows Installer
+
+For the easiest installation experience, a Windows installer (`InternetMonitorSetup.exe`) is available in the `dist` folder of this repository.
+
+**Steps:**
+1.  Download the installer file.
+2.  Double-click the installer to start the installation process.
+3.  Follow the on-screen instructions:
+    *   Select your preferred language for the installer
+    *   Choose the installation location (default is Program Files)
+    *   Decide whether to create a desktop shortcut
+4.  After installation, you can launch Internet Monitor from:
+    *   The desktop shortcut (if you chose to create one)
+    *   The Start Menu under "Internet Monitor"
+
+**Note:** The installer properly packages all required files, including the localization files for multi-language support.
 
 ## Dependencies
 
