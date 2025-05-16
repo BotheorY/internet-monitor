@@ -1,0 +1,16 @@
+{
+    "app_title": "인터넷 모니터",
+    "checking": "연결 확인 중...",
+    "connected": "인터넷에 연결됨",
+    "disconnected": "인터넷에 연결되지 않음!",
+    "last_disconnection": "마지막 연결 끊김:",
+    "last_reconnection": "마지막 재연결:",
+    "close_button": "닫기",
+    "not_available": "N/A",
+    "language_menu": "언어",
+    "english": "영어",
+    "italian": "이탈리아어",
+    "error_scanning_locales_dir": "언어 디렉터리 스캔 오류: {0}",
+    "error_loading_language_file": "언어 파일 {0} 로드 오류: {1}",
+    "error_detecting_system_language": "시스템 언어 감지 오류: {0}"
+}

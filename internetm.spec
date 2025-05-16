@@ -5,7 +5,8 @@ a = Analysis(
     ['internet_monitor.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('icon/internet-monitor.ico', 'icon')],
+
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,5 +36,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['internet-monitor.ico'],
+    icon=['icon/internet-monitor.ico'],
 )

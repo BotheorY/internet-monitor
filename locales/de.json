@@ -1,0 +1,16 @@
+{
+    "app_title": "Internetmonitor",
+    "checking": "Verbindung wird überprüft...",
+    "connected": "Mit dem Internet verbunden",
+    "disconnected": "NICHT MIT DEM INTERNET VERBUNDEN!",
+    "last_disconnection": "Letzte Trennung:",
+    "last_reconnection": "Letzte Wiederverbindung:",
+    "close_button": "Schließen",
+    "not_available": "N/V",
+    "language_menu": "Sprache",
+    "english": "Englisch",
+    "italian": "Italienisch",
+    "error_scanning_locales_dir": "Fehler beim Scannen des Sprachverzeichnisses: {0}",
+    "error_loading_language_file": "Fehler beim Laden der Sprachdatei {0}: {1}",
+    "error_detecting_system_language": "Fehler beim Erkennen der Systemsprache: {0}"
+}

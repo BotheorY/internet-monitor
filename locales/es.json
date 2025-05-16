@@ -1,0 +1,16 @@
+{
+    "app_title": "Monitor de Internet",
+    "checking": "Comprobando la conexión...",
+    "connected": "Conectado a Internet",
+    "disconnected": "¡NO CONECTADO A INTERNET!",
+    "last_disconnection": "Última desconexión:",
+    "last_reconnection": "Última reconexión:",
+    "close_button": "Cerrar",
+    "not_available": "N/D",
+    "language_menu": "Idioma",
+    "english": "Inglés",
+    "italian": "Italiano",
+    "error_scanning_locales_dir": "Error al escanear el directorio de idiomas: {0}",
+    "error_loading_language_file": "Error al cargar el archivo de idioma {0}: {1}",
+    "error_detecting_system_language": "Error al detectar el idioma del sistema: {0}"
+}

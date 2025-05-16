@@ -1,0 +1,16 @@
+{
+    "app_title": "مراقب الإنترنت",
+    "checking": "يتم التحقق من الاتصال...",
+    "connected": "متصل بالإنترنت",
+    "disconnected": "غير متصل بالإنترنت!",
+    "last_disconnection": "آخر انقطاع:",
+    "last_reconnection": "آخر إعادة اتصال:",
+    "close_button": "إغلاق",
+    "not_available": "غير متاح",
+    "language_menu": "اللغة",
+    "english": "الإنجليزية",
+    "italian": "الإيطالية",
+    "error_scanning_locales_dir": "خطأ في مسح دليل الإعدادات المحلية: {0}",
+    "error_loading_language_file": "خطأ في تحميل ملف اللغة {0}: {1}",
+    "error_detecting_system_language": "خطأ في اكتشاف لغة النظام: {0}"
+}

@@ -9,6 +9,7 @@ Internet Monitor is a simple desktop application built with Python and Tkinter t
 *   **Last Event Display:** Displays the date and time of the last recorded internet disconnection and reconnection.
 *   **Persistent History:** Loads the last known disconnection and reconnection times from the log file on startup.
 *   **User-Friendly Interface:** Simple GUI that provides clear information at a glance.
+*   **Multi-language Support:** Supports multiple languages (currently English, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Russian, Chinese and Arabic) with automatic detection of system language at startup.
 
 ## How to Run
 
@@ -47,6 +48,33 @@ An executable version (`internetm.exe`) can be built using PyInstaller. The `int
 
 *   **Python 3.x**
 *   **Tkinter:** For the graphical user interface. This is typically part of the Python standard library, so no separate installation is usually needed.
+*   **JSON:** Used for storing language translation files.
+
+## Localization
+
+The application supports multiple languages with automatic detection of the system language at startup. Currently supported languages are:
+
+* English (en)
+* German (de)
+* Spanish (es)
+* French (fr)
+* Italian (it)
+* Japanese (ja)
+* Korean (ko)
+* Portuguese (pt)
+* Russian (ru)
+* Chinese (zh)
+* Arabic (ar)
+
+### Adding a New Language
+
+To add a new language to the application:
+
+1. Create a new JSON file in the `locales` directory with the language code as the filename (e.g., `fr.json` for French)
+2. Copy the structure from an existing language file (e.g., `en.json`)
+3. Translate all the string values to the new language
+
+The application will automatically detect the new language file and add it to the available languages list. No code changes are required.
 
 ## Logging
 

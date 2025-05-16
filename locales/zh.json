@@ -1,0 +1,16 @@
+{
+    "app_title": "互联网监控器",
+    "checking": "正在检查连接...",
+    "connected": "已连接到互联网",
+    "disconnected": "未连接到互联网！",
+    "last_disconnection": "上次断开连接：",
+    "last_reconnection": "上次重新连接：",
+    "close_button": "关闭",
+    "not_available": "不可用",
+    "language_menu": "语言",
+    "english": "英语",
+    "italian": "意大利语",
+    "error_scanning_locales_dir": "扫描语言目录时出错：{0}",
+    "error_loading_language_file": "加载语言文件 {0} 时出错：{1}",
+    "error_detecting_system_language": "检测系统语言时出错：{0}"
+}

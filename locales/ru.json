@@ -1,0 +1,16 @@
+{
+    "app_title": "Интернет Монитор",
+    "checking": "Проверка соединения...",
+    "connected": "Подключено к Интернету",
+    "disconnected": "НЕТ ПОДКЛЮЧЕНИЯ К ИНТЕРНЕТУ!",
+    "last_disconnection": "Последнее отключение:",
+    "last_reconnection": "Последнее переподключение:",
+    "close_button": "Закрыть",
+    "not_available": "Н/Д",
+    "language_menu": "Язык",
+    "english": "Английский",
+    "italian": "Итальянский",
+    "error_scanning_locales_dir": "Ошибка при сканировании каталога языков: {0}",
+    "error_loading_language_file": "Ошибка при загрузке языкового файла {0}: {1}",
+    "error_detecting_system_language": "Ошибка при определении языка системы: {0}"
+}

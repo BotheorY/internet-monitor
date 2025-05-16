@@ -1,0 +1,16 @@
+{
+    "app_title": "インターネットモニター",
+    "checking": "接続を確認中...",
+    "connected": "インターネットに接続されています",
+    "disconnected": "インターネットに接続されていません！",
+    "last_disconnection": "最後の切断：",
+    "last_reconnection": "最後の再接続：",
+    "close_button": "閉じる",
+    "not_available": "N/A",
+    "language_menu": "言語",
+    "english": "英語",
+    "italian": "イタリア語",
+    "error_scanning_locales_dir": "言語ディレクトリのスキャン中にエラーが発生しました: {0}",
+    "error_loading_language_file": "言語ファイル {0} の読み込み中にエラーが発生しました: {1}",
+    "error_detecting_system_language": "システム言語の検出中にエラーが発生しました: {0}"
+}

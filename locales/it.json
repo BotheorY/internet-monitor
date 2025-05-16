@@ -1,0 +1,13 @@
+{
+    "app_title": "Internet Monitor",
+    "checking": "Verifica in corso...",
+    "connected": "Connesso a Internet",
+    "disconnected": "NON CONNESSO A INTERNET!",
+    "last_disconnection": "Ultima disconnessione:",
+    "last_reconnection": "Ultima riconnessione:",
+    "close_button": "Chiudi",
+    "not_available": "N/A",
+    "language_menu": "Lingua",
+    "english": "Inglese",
+    "italian": "Italiano"
+}
