@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk, font
+from tkinter import ttk, font, messagebox
 import datetime
 import socket
 import os
@@ -7,7 +7,21 @@ import sys
 import locale
 from localization import Localization
 
-LOG_FILE = "internet_log.txt"
+# Determine log file path based on execution mode
+def get_log_file_path():
+    if getattr(sys, 'frozen', False):
+        # If running as a compiled executable, use AppData folder
+        data_dir = os.path.join(os.environ.get('APPDATA', ''), 'InternetMonitor')
+        # Create the directory if it doesn't exist
+        if not os.path.exists(data_dir):
+            os.makedirs(data_dir)
+        return os.path.join(data_dir, "internet_log.txt")
+    else:
+        # If running as a script, use the current directory
+        return "internet_log.txt"
+
+# Log file path
+LOG_FILE = get_log_file_path()
 
 class InternetMonitorApp:
     def __init__(self, root: tk.Tk):
@@ -19,7 +33,7 @@ class InternetMonitorApp:
         
         self.root = root
         self.root.title(self.localization.get_string("app_title"))
-        self.root.geometry("450x220") # Fixed size
+        self.root.geometry("600x220") # Fixed size
         self.root.resizable(False, False) # Not resizable
 
         # Determine base path for resources
@@ -101,11 +115,21 @@ class InternetMonitorApp:
         info_frame.columnconfigure(0, weight=1)
         info_frame.columnconfigure(1, weight=1)
 
-        # Close button
-        style = ttk.Style()
+        # Frame for bottom buttons
+        bottom_buttons_frame = ttk.Frame(main_frame)
+        bottom_buttons_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=(0, 5)) # pady=(top, bottom)
+
+        style = ttk.Style() # Ensure style is available or re-configure if needed
         style.configure("Large.TButton", font=self.button_font)
-        close_button = ttk.Button(main_frame, text=self.localization.get_string("close_button"), command=self.root.quit, style="Large.TButton")
-        close_button.pack(side=tk.BOTTOM, anchor=tk.SE, pady=10, padx=10)
+
+        # Log file button - positioned at bottom left
+        self.log_button = ttk.Button(bottom_buttons_frame, text="📄", command=self.open_log_file, style="Large.TButton")
+        self.log_button.pack(side=tk.LEFT, anchor=tk.SW, padx=10, pady=5) # padx for horizontal, pady for vertical spacing within frame
+        self.create_tooltip(self.log_button, self.localization.get_string("open_log_tooltip"))
+
+        # Close button - positioned at bottom right
+        self.close_button = ttk.Button(bottom_buttons_frame, text=self.localization.get_string("close_button"), command=self.root.quit, style="Large.TButton")
+        self.close_button.pack(side=tk.RIGHT, anchor=tk.SE, padx=10, pady=5) # padx for horizontal, pady for vertical spacing within frame
 
         self.check_connection()
 
@@ -149,7 +173,9 @@ class InternetMonitorApp:
             self.last_down_time = last_down
             self.last_up_time = last_up
         except Exception as e:
-            print(f"Error loading log file: {e}") # Log to console for debugging
+            error_msg = f"Error loading log file: {e}"
+            print(error_msg) # Log to console for debugging
+            messagebox.showerror("Error", error_msg) # Show error in GUI
 
     def check_internet_connection(self):
         try:
@@ -253,6 +279,12 @@ class InternetMonitorApp:
             self.last_up_label.config(text=self.last_up_time.strftime("%x %H:%M"))
         else:
             self.last_up_label.config(text=self.localization.get_string("not_available"))
+            
+        # Update tooltip for log button
+        if hasattr(self.log_button, "tooltip"):
+            new_tooltip_text = self.localization.get_string("open_log_tooltip")
+            self.log_button.tooltip.config(text=new_tooltip_text)
+            self.log_button.tooltip.tooltip_text = new_tooltip_text # Update the stored attribute if it's used elsewhere
     
     def _update_widget_recursive(self, widget):
         """Recursively update all user interface widgets"""
@@ -262,9 +294,10 @@ class InternetMonitorApp:
             if widget not in [self.status_label, self.last_down_label, self.last_up_label]:
                 self._update_label_text(widget)
         elif isinstance(widget, ttk.Button):
-            # Update the button text
-            if widget.cget("text"):
+            # Update the button text if it's the close button
+            if widget == self.close_button: # More robust check
                 widget.config(text=self.localization.get_string("close_button"))
+            # self.log_button's text (icon) does not need localization.
         elif isinstance(widget, tk.Menu):
             # Menus have already been recreated in the change_language method
             pass
@@ -321,6 +354,46 @@ class InternetMonitorApp:
         except (tk.TclError, AttributeError):
             # Ignore errors if the widget doesn't have the text attribute
             pass
+            
+    def create_tooltip(self, widget, text):
+        """Create a tooltip for a given widget"""
+        # Creare il tooltip come figlio della finestra principale invece che del widget
+        tooltip_label = tk.Label(self.root, text=text, background="#FFFFEA", relief="solid", borderwidth=1)
+        tooltip_label.tooltip_text = text  # Store the text for language updates
+        
+        def enter(event):
+            # Calcolare la posizione relativa alla finestra principale
+            x = widget.winfo_rootx() - self.root.winfo_rootx() + 20
+            y = widget.winfo_rooty() - self.root.winfo_rooty() + widget.winfo_height() + 1
+            tooltip_label.place(x=x, y=y)
+            
+        def leave(event):
+            tooltip_label.place_forget()
+            
+        widget.bind("<Enter>", enter)
+        widget.bind("<Leave>", leave)
+        
+        # Memorizzare il riferimento al tooltip per l'aggiornamento della lingua
+        if not hasattr(widget, "tooltip"):
+            widget.tooltip = tooltip_label
+    
+    def open_log_file(self):
+        """Open the log file with the default system application"""
+        try:
+            if not os.path.exists(LOG_FILE):
+                messagebox.showinfo("Info", self.localization.get_string("log_file_not_found"))
+                return
+            # Use the appropriate command based on the operating system
+            if sys.platform == 'win32':
+                os.startfile(LOG_FILE)
+            elif sys.platform == 'darwin':  # macOS
+                os.system(f'open "{LOG_FILE}"')
+            else:  # Linux and other Unix-like systems
+                os.system(f'xdg-open "{LOG_FILE}"')
+        except Exception as e:
+            error_msg = f"Error opening log file: {e}"
+            print(error_msg)  # Log to console for debugging
+            messagebox.showerror("Error", error_msg) # Show error in GUI
 
 if __name__ == "__main__":
     root = tk.Tk()

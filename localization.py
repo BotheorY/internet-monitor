@@ -2,6 +2,7 @@ import locale
 import json
 import os
 import sys
+import tkinter.messagebox as messagebox
 
 class Localization:
     def __init__(self):
@@ -50,7 +51,9 @@ class Localization:
                     if lang_code not in self.available_languages:
                         self.available_languages.append(lang_code)
         except Exception as e:
-            print(f"Error scanning languages directory: {e}")
+            error_msg = f"Error scanning languages directory: {e}"
+            print(error_msg)
+            messagebox.showerror("Error", error_msg) # Show error in GUI
     
     def _load_languages(self):
         """Load all available language files from embedded resources or locales directory"""
@@ -81,7 +84,9 @@ class Localization:
                         with open(lang_file, 'r', encoding='utf-8') as f:
                             self.translations[lang] = json.load(f)
                     except Exception as e:
-                        print(f"Error loading language file {lang_file}: {e}")
+                        error_msg = f"Error loading language file {lang_file}: {e}"
+                        print(error_msg)
+                        messagebox.showerror("Error", error_msg) # Show error in GUI
     
     def _load_embedded_languages(self):
         """Load embedded language data"""
@@ -157,7 +162,9 @@ class Localization:
             # Default to English if system language is not available
             self.current_language = "en"
         except Exception as e:
-            print(f"Error detecting system language: {e}")
+            error_msg = f"Error detecting system language: {e}"
+            print(error_msg)
+            messagebox.showerror("Error", error_msg) # Show error in GUI
             self.current_language = "en"
     
     def get_string(self, key, lang_code=None):

@@ -12,5 +12,7 @@
     "italian": "Итальянский",
     "error_scanning_locales_dir": "Ошибка при сканировании каталога языков: {0}",
     "error_loading_language_file": "Ошибка при загрузке языкового файла {0}: {1}",
-    "error_detecting_system_language": "Ошибка при определении языка системы: {0}"
+    "error_detecting_system_language": "Ошибка при определении языка системы: {0}",
+    "open_log_tooltip": "Открыть файл журнала",
+    "log_file_not_found": "Файл журнала не найден"
 }

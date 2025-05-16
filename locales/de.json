@@ -12,5 +12,7 @@
     "italian": "Italienisch",
     "error_scanning_locales_dir": "Fehler beim Scannen des Sprachverzeichnisses: {0}",
     "error_loading_language_file": "Fehler beim Laden der Sprachdatei {0}: {1}",
-    "error_detecting_system_language": "Fehler beim Erkennen der Systemsprache: {0}"
+    "error_detecting_system_language": "Fehler beim Erkennen der Systemsprache: {0}",
+    "open_log_tooltip": "Protokolldatei öffnen",
+    "log_file_not_found": "Protokolldatei nicht gefunden"
 }

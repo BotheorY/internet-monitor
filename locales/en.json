@@ -9,5 +9,7 @@
     "not_available": "N/A",
     "language_menu": "Language",
     "english": "English",
-    "italian": "Italian"
+    "italian": "Italiano",
+    "open_log_tooltip": "Open log file",
+    "log_file_not_found": "Log file not found"
 }
