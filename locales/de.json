@@ -1,5 +1,5 @@
 {
-    "app_title": "Internetmonitor",
+    "app_title": "Internet Monitor",
     "checking": "Verbindung wird überprüft...",
     "connected": "Mit dem Internet verbunden",
     "disconnected": "NICHT MIT DEM INTERNET VERBUNDEN!",
@@ -13,6 +13,8 @@
     "error_scanning_locales_dir": "Fehler beim Scannen des Sprachverzeichnisses: {0}",
     "error_loading_language_file": "Fehler beim Laden der Sprachdatei {0}: {1}",
     "error_detecting_system_language": "Fehler beim Erkennen der Systemsprache: {0}",
+    "autostart_menu": "Autostart",
+    "autostart_option": "Mit Windows starten",
     "open_log_tooltip": "Protokolldatei öffnen",
     "log_file_not_found": "Protokolldatei nicht gefunden"
 }

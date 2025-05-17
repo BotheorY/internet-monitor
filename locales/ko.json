@@ -10,6 +10,8 @@
     "language_menu": "언어",
     "english": "영어",
     "italian": "이탈리아어",
+    "autostart_menu": "자동 시작",
+    "autostart_option": "Windows와 함께 시작",
     "error_scanning_locales_dir": "언어 디렉터리 스캔 오류: {0}",
     "error_loading_language_file": "언어 파일 {0} 로드 오류: {1}",
     "error_detecting_system_language": "시스템 언어 감지 오류: {0}",

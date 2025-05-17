@@ -10,6 +10,8 @@
     "language_menu": "Langue",
     "english": "Anglais",
     "italian": "Italien",
+    "autostart_menu": "Démarrage automatique",
+    "autostart_option": "Démarrer avec Windows",
     "error_scanning_locales_dir": "Erreur lors de l'analyse du répertoire des langues: {0}",
     "error_loading_language_file": "Erreur lors du chargement du fichier de langue {0}: {1}",
     "error_detecting_system_language": "Erreur lors de la détection de la langue du système: {0}",

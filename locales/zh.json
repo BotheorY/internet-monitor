@@ -10,6 +10,8 @@
     "language_menu": "语言",
     "english": "英语",
     "italian": "意大利语",
+    "autostart_menu": "自动启动",
+    "autostart_option": "随Windows启动",
     "error_scanning_locales_dir": "扫描语言目录时出错：{0}",
     "error_loading_language_file": "加载语言文件 {0} 时出错：{1}",
     "error_detecting_system_language": "检测系统语言时出错：{0}",

@@ -2,7 +2,7 @@
 ; This script creates a Windows installer for the Internet Monitor application
 
 #define MyAppName "Internet Monitor"
-#define MyAppVersion "1.1.0"
+#define MyAppVersion "1.2.0"
 #define MyAppPublisher "Internet Monitor"
 #define MyAppExeName "internetm.exe"
 

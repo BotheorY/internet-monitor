@@ -10,6 +10,8 @@
     "language_menu": "اللغة",
     "english": "الإنجليزية",
     "italian": "الإيطالية",
+    "autostart_menu": "بدء التشغيل التلقائي",
+    "autostart_option": "بدء التشغيل مع Windows",
     "error_scanning_locales_dir": "خطأ في مسح دليل الإعدادات المحلية: {0}",
     "error_loading_language_file": "خطأ في تحميل ملف اللغة {0}: {1}",
     "error_detecting_system_language": "خطأ في اكتشاف لغة النظام: {0}",

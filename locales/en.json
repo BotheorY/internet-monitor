@@ -10,6 +10,8 @@
     "language_menu": "Language",
     "english": "English",
     "italian": "Italiano",
+    "autostart_menu": "Autostart",
+    "autostart_option": "Start with Windows",
     "open_log_tooltip": "Open log file",
     "log_file_not_found": "Log file not found"
 }

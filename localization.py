@@ -103,6 +103,10 @@ class Localization:
             "language_menu": "Language",
             "english": "English",
             "italian": "Italian",
+            "autostart_menu": "Autostart",
+            "autostart_option": "Start with Windows",
+            "open_log_tooltip": "Open log file",
+            "log_file_not_found": "Log file not found",
             # Error messages
             "error_scanning_locales_dir": "Error scanning locales directory: {0}",
             "error_loading_language_file": "Error loading language file {0}: {1}",
@@ -122,6 +126,10 @@ class Localization:
             "language_menu": "Lingua",
             "english": "Inglese",
             "italian": "Italiano",
+            "autostart_menu": "Avvio automatico",
+            "autostart_option": "Avvia con Windows",
+            "open_log_tooltip": "Apri file di log",
+            "log_file_not_found": "File di log non trovato",
             # Error messages
             "error_scanning_locales_dir": "Errore durante la scansione della directory delle lingue: {0}",
             "error_loading_language_file": "Errore durante il caricamento del file di lingua {0}: {1}",

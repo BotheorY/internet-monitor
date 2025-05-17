@@ -5,6 +5,7 @@ import socket
 import os
 import sys
 import locale
+import winreg
 from localization import Localization
 
 # Determine log file path based on execution mode
@@ -85,6 +86,20 @@ class InternetMonitorApp:
             
             # Add the menu item with lambda function for language change
             self.language_menu.add_command(label=lang_name, command=lambda code=lang_code: self.change_language(code))
+            
+        # Autostart menu
+        self.autostart_menu = tk.Menu(self.menu_bar, tearoff=0)
+        self.menu_bar.add_cascade(label=self.localization.get_string("autostart_menu"), menu=self.autostart_menu)
+        
+        # Check if autostart is enabled
+        is_autostart_enabled = self.is_autostart_enabled()
+        
+        # Add menu item for autostart with checkmark if enabled
+        autostart_label = self.localization.get_string("autostart_option")
+        if is_autostart_enabled:
+            autostart_label = "✓ " + autostart_label
+            
+        self.autostart_menu.add_command(label=autostart_label, command=self.toggle_autostart)
         
         # Main frame
         main_frame = ttk.Frame(root, padding="10 10 10 10")
@@ -221,6 +236,126 @@ class InternetMonitorApp:
         # Schedule the next check in 60 seconds
         self.root.after(60000, self.check_connection)
 
+    def is_autostart_enabled(self):
+        """Check if the application is set to start automatically with Windows"""
+        try:
+            # Open the registry key for current user's startup programs
+            registry_key = winreg.OpenKey(
+                winreg.HKEY_CURRENT_USER,
+                r"SOFTWARE\Microsoft\Windows\CurrentVersion\Run",
+                0, winreg.KEY_READ
+            )
+            
+            # Try to get the value for our application
+            try:
+                value, _ = winreg.QueryValueEx(registry_key, "InternetMonitor")
+                # Get the path of the current executable
+                if getattr(sys, 'frozen', False):
+                    app_path = sys.executable
+                else:
+                    app_path = os.path.abspath(__file__)
+                    
+                # Check if the registry value matches our executable path
+                return value == f'"{app_path}"'
+            except FileNotFoundError:
+                return False
+            finally:
+                winreg.CloseKey(registry_key)
+        except Exception as e:
+            print(f"Error checking autostart status: {e}")
+            return False
+    
+    def enable_autostart(self):
+        """Enable automatic startup with Windows"""
+        try:
+            # Open the registry key for current user's startup programs
+            registry_key = winreg.OpenKey(
+                winreg.HKEY_CURRENT_USER,
+                r"SOFTWARE\Microsoft\Windows\CurrentVersion\Run",
+                0, winreg.KEY_WRITE
+            )
+            
+            # Get the path of the current executable
+            if getattr(sys, 'frozen', False):
+                app_path = sys.executable
+            else:
+                app_path = os.path.abspath(__file__)
+                
+            # Add the registry value
+            winreg.SetValueEx(registry_key, "InternetMonitor", 0, winreg.REG_SZ, f'"{app_path}"')
+            winreg.CloseKey(registry_key)
+            return True
+        except Exception as e:
+            print(f"Error enabling autostart: {e}")
+            return False
+    
+    def disable_autostart(self):
+        """Disable automatic startup with Windows"""
+        try:
+            # Open the registry key for current user's startup programs
+            registry_key = winreg.OpenKey(
+                winreg.HKEY_CURRENT_USER,
+                r"SOFTWARE\Microsoft\Windows\CurrentVersion\Run",
+                0, winreg.KEY_WRITE
+            )
+            
+            # Delete the registry value
+            try:
+                winreg.DeleteValue(registry_key, "InternetMonitor")
+            except FileNotFoundError:
+                # Value doesn't exist, which is fine
+                pass
+            winreg.CloseKey(registry_key)
+            return True
+        except Exception as e:
+            print(f"Error disabling autostart: {e}")
+            return False
+    
+    def toggle_autostart(self):
+        """Toggle automatic startup with Windows"""
+        if self.is_autostart_enabled():
+            success = self.disable_autostart()
+        else:
+            success = self.enable_autostart()
+            
+        if success:
+            # Recreate the menu to update the checkmark
+            self.update_menus()
+    
+    def update_menus(self):
+        """Update all menus with current settings"""
+        # Remove all existing menus
+        if self.menu_bar.index("end") is not None:
+            self.menu_bar.delete(0, tk.END)
+        
+        # Recreate language menu
+        self.language_menu = tk.Menu(self.menu_bar, tearoff=0)
+        self.menu_bar.add_cascade(label=self.localization.get_string("language_menu"), menu=self.language_menu)
+        
+        # Add language menu items
+        for lang_code in self.localization.get_available_languages():
+            lang_name = self.localization.get_string(lang_code)
+            if lang_name == lang_code:
+                lang_name = self.localization.get_string(lang_code, "en")
+                if lang_name == lang_code:
+                    lang_name = lang_code.capitalize()
+            
+            if lang_code == self.localization.get_current_language():
+                lang_name = "✓ " + lang_name
+            
+            self.language_menu.add_command(label=lang_name, command=lambda code=lang_code: self.change_language(code))
+        
+        # Recreate autostart menu
+        self.autostart_menu = tk.Menu(self.menu_bar, tearoff=0)
+        self.menu_bar.add_cascade(label=self.localization.get_string("autostart_menu"), menu=self.autostart_menu)
+        
+        # Add autostart menu item with checkmark if enabled
+        autostart_label = self.localization.get_string("autostart_option")
+        if self.is_autostart_enabled():
+            autostart_label = "✓ " + autostart_label
+            
+        self.autostart_menu.add_command(label=autostart_label, command=self.toggle_autostart)
+    
     def change_language(self, lang_code):
         """Change the application language"""
         if self.localization.set_language(lang_code):
@@ -233,33 +368,8 @@ class InternetMonitorApp:
             else:
                 self.status_label.config(text=self.localization.get_string("connected" if self.is_connected else "disconnected"))
             
-            # Completely recreate the menu instead of updating it
-            # Remove all existing menus
-            if self.menu_bar.index("end") is not None:
-                self.menu_bar.delete(0, tk.END)
-            
-            # Dynamically recreate the language menu based on available languages
-            self.language_menu = tk.Menu(self.menu_bar, tearoff=0)
-            self.menu_bar.add_cascade(label=self.localization.get_string("language_menu"), menu=self.language_menu)
-            
-            # Add a menu item for each available language
-            for lang_code_item in self.localization.get_available_languages():
-                # Get the localized name of the language
-                lang_name = self.localization.get_string(lang_code_item)
-                # If the language name is not available, use the language code
-                if lang_name == lang_code_item:
-                    # Try to get the language name from the English translation
-                    lang_name = self.localization.get_string(lang_code_item, "en")
-                    if lang_name == lang_code_item:
-                        # If still not available, use the language code with the first letter capitalized
-                        lang_name = lang_code_item.capitalize()
-                
-                # Add a checkmark (✓) next to the currently selected language
-                if lang_code_item == self.localization.get_current_language():
-                    lang_name = "✓ " + lang_name
-                
-                # Add the menu item with lambda function for language change
-                self.language_menu.add_command(label=lang_name, command=lambda code=lang_code_item: self.change_language(code))
+            # Update all menus
+            self.update_menus()
             
             # Update all user interface elements
             self._update_all_ui_elements()
