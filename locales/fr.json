@@ -16,5 +16,9 @@
     "error_loading_language_file": "Erreur lors du chargement du fichier de langue {0}: {1}",
     "error_detecting_system_language": "Erreur lors de la détection de la langue du système: {0}",
     "open_log_tooltip": "Ouvrir le fichier journal",
-    "log_file_not_found": "Fichier journal introuvable"
+    "log_file_not_found": "Fichier journal introuvable",
+    "delete_log_tooltip": "Supprimer le fichier journal",
+    "delete_log_confirm": "Êtes-vous sûr de vouloir supprimer le fichier journal?",
+    "delete_log_success": "Le fichier journal a été supprimé avec succès",
+    "delete_log_error": "Erreur lors de la suppression du fichier journal: {0}"
 }

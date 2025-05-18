@@ -16,5 +16,9 @@
     "error_loading_language_file": "Erro ao carregar o arquivo de idioma {0}: {1}",
     "error_detecting_system_language": "Erro ao detectar o idioma do sistema: {0}",
     "open_log_tooltip": "Abrir arquivo de log",
-    "log_file_not_found": "Arquivo de log não encontrado"
+    "log_file_not_found": "Arquivo de log não encontrado",
+    "delete_log_tooltip": "Excluir arquivo de log",
+    "delete_log_confirm": "Tem certeza que deseja excluir o arquivo de log?",
+    "delete_log_success": "O arquivo de log foi excluído com sucesso",
+    "delete_log_error": "Erro ao excluir o arquivo de log: {0}"
 }

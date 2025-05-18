@@ -16,5 +16,9 @@
     "autostart_menu": "Autostart",
     "autostart_option": "Mit Windows starten",
     "open_log_tooltip": "Protokolldatei öffnen",
-    "log_file_not_found": "Protokolldatei nicht gefunden"
+    "log_file_not_found": "Protokolldatei nicht gefunden",
+    "delete_log_tooltip": "Protokolldatei löschen",
+    "delete_log_confirm": "Sind Sie sicher, dass Sie die Protokolldatei löschen möchten?",
+    "delete_log_success": "Protokolldatei wurde erfolgreich gelöscht",
+    "delete_log_error": "Fehler beim Löschen der Protokolldatei: {0}"
 }

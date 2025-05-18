@@ -16,5 +16,9 @@
     "error_loading_language_file": "خطأ في تحميل ملف اللغة {0}: {1}",
     "error_detecting_system_language": "خطأ في اكتشاف لغة النظام: {0}",
     "open_log_tooltip": "فتح ملف السجل",
-    "log_file_not_found": "لم يتم العثور على ملف السجل"
+    "log_file_not_found": "لم يتم العثور على ملف السجل",
+    "delete_log_tooltip": "حذف ملف السجل",
+    "delete_log_confirm": "هل أنت متأكد أنك تريد حذف ملف السجل؟",
+    "delete_log_success": "تم حذف ملف السجل بنجاح",
+    "delete_log_error": "خطأ في حذف ملف السجل: {0}"
 }

@@ -13,5 +13,9 @@
     "autostart_menu": "Autostart",
     "autostart_option": "Start with Windows",
     "open_log_tooltip": "Open log file",
-    "log_file_not_found": "Log file not found"
+    "log_file_not_found": "Log file not found",
+    "delete_log_tooltip": "Delete log file",
+    "delete_log_confirm": "Are you sure you want to delete the log file?",
+    "delete_log_success": "Log file has been deleted successfully",
+    "delete_log_error": "Error deleting log file: {0}"
 }

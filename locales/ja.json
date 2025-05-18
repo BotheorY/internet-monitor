@@ -16,5 +16,9 @@
     "error_loading_language_file": "言語ファイル {0} の読み込み中にエラーが発生しました: {1}",
     "error_detecting_system_language": "システム言語の検出中にエラーが発生しました: {0}",
     "open_log_tooltip": "ログファイルを開く",
-    "log_file_not_found": "ログファイルが見つかりません"
+    "log_file_not_found": "ログファイルが見つかりません",
+    "delete_log_tooltip": "ログファイルを削除",
+    "delete_log_confirm": "ログファイルを削除してもよろしいですか？",
+    "delete_log_success": "ログファイルが正常に削除されました",
+    "delete_log_error": "ログファイルの削除中にエラーが発生しました: {0}"
 }

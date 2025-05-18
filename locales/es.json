@@ -16,5 +16,9 @@
     "error_loading_language_file": "Error al cargar el archivo de idioma {0}: {1}",
     "error_detecting_system_language": "Error al detectar el idioma del sistema: {0}",
     "open_log_tooltip": "Abrir archivo de registro",
-    "log_file_not_found": "Archivo de registro no encontrado"
+    "log_file_not_found": "Archivo de registro no encontrado",
+    "delete_log_tooltip": "Eliminar archivo de registro",
+    "delete_log_confirm": "¿Está seguro de que desea eliminar el archivo de registro?",
+    "delete_log_success": "El archivo de registro se ha eliminado correctamente",
+    "delete_log_error": "Error al eliminar el archivo de registro: {0}"
 }

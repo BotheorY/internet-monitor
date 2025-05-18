@@ -141,6 +141,11 @@ class InternetMonitorApp:
         self.log_button = ttk.Button(bottom_buttons_frame, text="📄", command=self.open_log_file, style="Large.TButton")
         self.log_button.pack(side=tk.LEFT, anchor=tk.SW, padx=10, pady=5) # padx for horizontal, pady for vertical spacing within frame
         self.create_tooltip(self.log_button, self.localization.get_string("open_log_tooltip"))
+        
+        # Delete log file button - positioned next to log button
+        self.delete_log_button = ttk.Button(bottom_buttons_frame, text="❌", command=self.delete_log_file, style="Large.TButton")
+        self.delete_log_button.pack(side=tk.LEFT, anchor=tk.SW, padx=10, pady=5)
+        self.create_tooltip(self.delete_log_button, self.localization.get_string("delete_log_tooltip"))
 
         # Close button - positioned at bottom right
         self.close_button = ttk.Button(bottom_buttons_frame, text=self.localization.get_string("close_button"), command=self.root.quit, style="Large.TButton")
@@ -395,6 +400,12 @@ class InternetMonitorApp:
             new_tooltip_text = self.localization.get_string("open_log_tooltip")
             self.log_button.tooltip.config(text=new_tooltip_text)
             self.log_button.tooltip.tooltip_text = new_tooltip_text # Update the stored attribute if it's used elsewhere
+            
+        # Update tooltip for delete log button
+        if hasattr(self.delete_log_button, "tooltip"):
+            new_tooltip_text = self.localization.get_string("delete_log_tooltip")
+            self.delete_log_button.tooltip.config(text=new_tooltip_text)
+            self.delete_log_button.tooltip.tooltip_text = new_tooltip_text # Update the stored attribute if it's used elsewhere
     
     def _update_widget_recursive(self, widget):
         """Recursively update all user interface widgets"""
@@ -504,6 +515,37 @@ class InternetMonitorApp:
             error_msg = f"Error opening log file: {e}"
             print(error_msg)  # Log to console for debugging
             messagebox.showerror("Error", error_msg) # Show error in GUI
+            
+    def delete_log_file(self):
+        """Delete the log file after confirmation"""
+        try:
+            # Check if log file exists
+            if not os.path.exists(LOG_FILE):
+                messagebox.showinfo("Info", self.localization.get_string("log_file_not_found"))
+                return
+                
+            # Ask for confirmation before deleting
+            # Default is 'no' (False) as requested
+            if messagebox.askyesno(
+                "Confirmation", 
+                self.localization.get_string("delete_log_confirm"),
+                default=messagebox.NO
+            ):
+                # Delete the file
+                os.remove(LOG_FILE)
+                
+                # Show notification of successful deletion
+                messagebox.showinfo("Info", self.localization.get_string("delete_log_success"))
+                
+                # Reset the last event times and update UI
+                self.last_down_time = None
+                self.last_up_time = None
+                self.last_down_label.config(text=self.localization.get_string("not_available"))
+                self.last_up_label.config(text=self.localization.get_string("not_available"))
+        except Exception as e:
+            error_msg = f"Error deleting log file: {e}"
+            print(error_msg)  # Log to console for debugging
+            messagebox.showerror("Error", self.localization.get_string("delete_log_error").format(str(e))) # Show localized error in GUI
 
 if __name__ == "__main__":
     root = tk.Tk()

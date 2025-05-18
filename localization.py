@@ -107,6 +107,10 @@ class Localization:
             "autostart_option": "Start with Windows",
             "open_log_tooltip": "Open log file",
             "log_file_not_found": "Log file not found",
+            "delete_log_tooltip": "Delete log file",
+            "delete_log_confirm": "Are you sure you want to delete the log file?",
+            "delete_log_success": "Log file deleted successfully",
+            "delete_log_error": "Error deleting log file: {0}",
             # Error messages
             "error_scanning_locales_dir": "Error scanning locales directory: {0}",
             "error_loading_language_file": "Error loading language file {0}: {1}",
@@ -130,6 +134,10 @@ class Localization:
             "autostart_option": "Avvia con Windows",
             "open_log_tooltip": "Apri file di log",
             "log_file_not_found": "File di log non trovato",
+            "delete_log_tooltip": "Elimina file di log",
+            "delete_log_confirm": "Sei sicuro di voler eliminare il file di log?",
+            "delete_log_success": "File di log eliminato con successo",
+            "delete_log_error": "Errore durante l'eliminazione del file di log: {0}",
             # Error messages
             "error_scanning_locales_dir": "Errore durante la scansione della directory delle lingue: {0}",
             "error_loading_language_file": "Errore durante il caricamento del file di lingua {0}: {1}",
