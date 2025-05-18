@@ -11,7 +11,7 @@ Internet Monitor is a simple desktop application built with Python and Tkinter t
 *   **Last Event Display:** Displays the date and time of the last recorded internet disconnection and reconnection.
 *   **Persistent History:** Loads the last known disconnection and reconnection times from the log file on startup.
 *   **User-Friendly Interface:** Simple GUI that provides clear information at a glance.
-*   **Open Log File:** Includes a buttons to easily open and delete the `internet_log.txt` file directly from the application.
+*   **Manage Log File:** Includes a buttons to easily open and delete the `internet_log.txt` file directly from the application.
 *   **Multi-language Support:** Supports multiple languages (currently English, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Russian, Chinese and Arabic) with automatic detection of system language at startup.
 
 ## How to Run
